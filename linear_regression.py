@@ -2,7 +2,7 @@ import numpy as np
 
 
 class LinearRegression:
-    def __init__(self, lr: float = 1e-3, epochs: int = 2000, debug: bool = False):
+    def __init__(self, lr: float = 1e-3, epochs: int = 100, debug: bool = False):
         self.lr = lr
         self.epochs = epochs
         self.debug = debug
@@ -15,8 +15,10 @@ class LinearRegression:
 
         w = np.zeros((X.shape[1], 1))
 
-        for epoch in self.epochs:
-            pass
+        for epoch in range(self.epochs):
+            y_hat=np.dot(X,w)
+            
+        
 
 
 if __name__ == "__main__":
