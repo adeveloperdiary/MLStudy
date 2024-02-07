@@ -2,7 +2,7 @@ import numpy as np
 import seaborn as sns
 import pandas as pd
 import math
-
+from scipy.stats import multivariate_normal
 
 class NaiveBayes():
 
@@ -41,8 +41,12 @@ class NaiveBayes():
         # pdf in log scale
         # pdf= -1/2 sum ( (X-Mean)**2/(std+eps) by row ) - 1/2 sum log (sigma+eps) - n_features/2 (log 2*pi)
 
-        return - (1/2)*np.sum(np.square(X-mean)/(std+self.eps), axis=1) - \
+        pdf1= - (1/2)*np.sum(np.square(X-mean)/(std+self.eps), axis=1) - \
             (1/2)*np.sum(np.log(std+self.eps)) - (X.shape[1]/2)*np.log(2*np.pi)
+        
+        pdf2= np.log(multivariate_normal.pdf(X,mean,std))
+        
+        return pdf2
 
     def predict(self, X, y):
         X_scaled = self._normalize(X)
