@@ -1,7 +1,5 @@
 import numpy as np
 import seaborn as sns
-import pandas as pd
-import math
 from scipy.stats import multivariate_normal
 
 class NaiveBayes():
