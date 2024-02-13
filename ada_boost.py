@@ -5,11 +5,11 @@ from sklearn.metrics import accuracy_score
 
 class AdaBoost:
     def __init__(self, n_estimators=10) -> None:
-        self.n_estimators = 10
+        self.n_estimators = n_estimators
         self.estimators = []
 
     def fit_boosting(self, X, y) -> None:
-        n_samples, n_features = X.shape
+        n_samples, _ = X.shape
         D = np.ones((n_samples,))
 
         for t in range(self.n_estimators):
